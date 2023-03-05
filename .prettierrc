@@ -6,7 +6,7 @@
   "htmlWhitespaceSensitivity": "css",
   "insertPragma": false,
   "jsxSingleQuote": false,
-  "printWidth": 120,
+  "printWidth": 80,
   "proseWrap": "preserve",
   "quoteProps": "as-needed",
   "requirePragma": false,
@@ -14,7 +14,7 @@
   "singleAttributePerLine": false,
   "singleQuote": true,
   "trailingComma": "es5",
-  "useTabs": false,
+  "useTabs": true,
   "vueIndentScriptAndStyle": false,
   "tabWidth": 2
 }

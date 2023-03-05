@@ -3,3 +3,8 @@ import service from '..'
 export function getMusicListDetail(id) {
   return service.get(`/playlist/detail?id=${id}`)
 }
+
+export function getMusicItemList(id) {
+  return service.get(`/playlist/track/all?id=${id}&limit=20&offset=0`)
+}
+

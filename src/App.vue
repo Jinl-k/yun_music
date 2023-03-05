@@ -1,7 +1,10 @@
 <template>
   <router-view />
+  <FooterMusic />
 </template>
+<script setup>
 
+</script>
 <style lang="less">
 * {
   margin: 0;
