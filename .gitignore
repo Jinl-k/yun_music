@@ -23,3 +23,5 @@ pnpm-debug.log*
 *.sw?
 yarn.lock
 babel.config.js
+jsconfig.json
+vue.config.js
