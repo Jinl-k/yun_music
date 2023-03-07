@@ -20,15 +20,17 @@
     </div>
     <!-- 播放功能 -->
     <audio ref="audio" :src="`https://music.163.com/song/media/outer/url?id=${playList[playListIndex].id}.mp3`"></audio>
-    <van-popup v-model:show="detailShow" position="right" :style="{ height: '100%', width: '100%' }">
+    <van-popup v-model:show="detailShow" position="bottom" :style="{ height: '100%', width: '100%' }">
+      <!-- 因为播放器的播放功能是在组件中实现的，所以在这里需要用到ref属性，通过ref属性获取到组件中的audio标签，
+        然后通过play()方法来实现播放功能,而播放页是没有audio的，所以直接把play传过去调用 -->
       <MusicDetail :musicList="playList[playListIndex]" :play="play" :isbtnShow="isbtnShow" :addDuration="addDuration" />
     </van-popup>
   </div>
 </template>
 
-<script >
+<script>
 import { mapMutations, mapState } from 'vuex';
-// import MusicDetail from '@/components/item/MusicDetail.vue';
+import MusicDetail from '@/components/item/MusicDetail.vue';
 export default {
   data() {
     return {
@@ -40,11 +42,11 @@ export default {
   },
   mounted() {
     console.log(this.$refs);
+    // 渲染时获取歌词
     this.$store.dispatch('getLyric', this.playList[this.playListIndex].id);
     this.updateTime();
   },
   updated() {
-    this.$store.dispatch('getLyric', this.playList[this.playListIndex].id);
     this.addDuration();
   },
   methods: {
@@ -76,6 +78,7 @@ export default {
     ]),
   },
   watch: {
+
     playListIndex: function () {
       //监听如果下标发生了改变，就自动播放音乐
       this.$refs.audio.autoplay = true;
@@ -83,8 +86,11 @@ export default {
         //如果是暂停状态，改变图标
         this.updateIsbtnShow(false);
       }
+      // 获取歌词
+      this.$store.dispatch('getLyric', this.playList[this.playListIndex].id)
     },
     playList: function () {
+      // 点击播放列表里的歌，就自动播放音乐
       if (this.isbtnShow) {
         this.$refs.audio.autoplay = true;
         this.updateIsbtnShow(false);
@@ -92,7 +98,7 @@ export default {
     },
   },
   components: {
-    // MusicDetail,
+    MusicDetail,
   },
 };
 </script>

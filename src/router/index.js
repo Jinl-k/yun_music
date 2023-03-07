@@ -17,6 +17,11 @@ const routes = [
     name: 'ItemMusic',
     component: () => import('../views/ItemMusic.vue'),
   },
+  {
+    path:'/search',
+    name:'Search',
+    component: () => import('../views/Search.vue')
+  }
 ];
 
 const router = createRouter({

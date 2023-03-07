@@ -6,5 +6,10 @@ export function getBanner(){
 }
 
 export function getMusicList(){
-  return service.get('personalized?limit=10')
+  return service.get('/personalized?limit=10')
 }
+
+export function getSearchMusic(data){
+  return service.get(`/search?keywords=${data}`)
+}
+

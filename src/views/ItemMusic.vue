@@ -15,7 +15,7 @@ const state = reactive({
 
 onBeforeMount(async () => {
   let id = useRoute().query.id;
-  // 获取歌单详情
+  // 获取歌单详情 let res = await getMusicListDetail(id);
   let res = await getMusicListDetail(id);
   state.playList = res.data.playlist;
 

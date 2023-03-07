@@ -36,7 +36,7 @@
   </div>
 </template>
 <script>
-// import { mapMutations } from 'vuex';
+import { mapMutations } from 'vuex';
 export default {
   setup(props) {
     console.log(props);
@@ -44,8 +44,10 @@ export default {
   props: ['itemList', 'subscribedCount'],
   methods: {
     playMusic: function (i) {
-      // this.updatePlayList(this.itemList);
-      // this.updatePlayListIndex(i);
+      // 更新播放列表,首页点歌单的时候实时变化
+      this.updatePlayList(this.itemList);
+      // 更新底部播放器,点歌单歌曲的时跟着变
+      this.updatePlayListIndex(i);
     },
     ...mapMutations(['updatePlayList', 'updatePlayListIndex']),
   },
